@@ -1,0 +1,4 @@
+.env
+attachments
+__pycache__
+*.sock
