@@ -1,7 +1,7 @@
 import requests
 
 # Base URL for the email operations
-base_url = 'http://localhost:5000/emails/'
+base_url = 'http://localhost:5000/api/v1/emails/'
 
 # JSON data for requests
 data_no_filter = {
@@ -16,7 +16,7 @@ data_with_filter = {
 
 # Function to log in and retrieve JWT
 def get_jwt():
-    login_url = 'http://localhost:5000/login'  # Change this if your login URL is different
+    login_url = 'http://localhost:5000/api/v1/login'  # Change this if your login URL is different
     login_data = {
         "username": "679b8acc-b61c-49ad-8fc6-17c261b3130c",
         "password": "56a9ba4d-7fbe-44c5-be8b-8a1f167291be"

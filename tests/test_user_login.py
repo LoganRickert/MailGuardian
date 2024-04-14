@@ -1,7 +1,7 @@
 import requests
 
 # URL of the login endpoint
-url = 'http://localhost:5000/login'  # Adjust the port and endpoint if necessary
+url = 'http://localhost:5000/api/v1/login'  # Adjust the port and endpoint if necessary
 
 # Data to send in the POST request
 login_data = {

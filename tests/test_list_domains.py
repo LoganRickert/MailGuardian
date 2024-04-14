@@ -2,7 +2,7 @@ import requests
 
 # Function to log in and get a JWT
 def get_jwt():
-    login_url = 'http://localhost:5000/login'  # Adjust this if your login endpoint differs
+    login_url = 'http://localhost:5000/api/v1/login'  # Adjust this if your login endpoint differs
     login_data = {
         "username": "679b8acc-b61c-49ad-8fc6-17c261b3130c",
         "password": "56a9ba4d-7fbe-44c5-be8b-8a1f167291be"
@@ -29,7 +29,7 @@ def list_collections(jwt):
 
 if __name__ == "__main__":
     # Endpoint URL for listing collections
-    url = 'http://localhost:5000/list-collections'
+    url = 'http://localhost:5000/api/v1/domains'
 
     # Get JWT
     token = get_jwt()

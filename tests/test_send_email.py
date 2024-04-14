@@ -3,11 +3,11 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv("../server/.env")
 webhook_uuid = os.getenv('WEBHOOK_UUID', 'default-uuid')
 
 # Endpoint URL
-url = f'http://localhost:5000/webhook/{webhook_uuid}'
+url = f'http://localhost:5000/api/v1/webhook/{webhook_uuid}'
 
 # Prepare the multipart/form-data
 form_data = {
@@ -29,7 +29,7 @@ form_data = {
 
 # Files to upload
 files = {
-    'files': ('README.md', open('README.md', 'rb'), 'text/plain')
+    'files': ('README.md', open('../README.md', 'rb'), 'text/plain')
 }
 
 # Send the POST request
