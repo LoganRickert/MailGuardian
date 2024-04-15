@@ -66,3 +66,11 @@ For support, please open an issue on the GitHub repository.
 ---
 
 **MailGuardian** is dedicated to providing a secure and efficient email management solution. For more information, updates, and contributions, please visit the GitHub repository.
+
+## Client
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+sudo apt-get install -y nodejs
+npm install -g @angular/cli
+
+cp environments/environment.ts environments/environment.dev.ts

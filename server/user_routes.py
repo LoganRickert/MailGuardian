@@ -24,6 +24,7 @@ async def create_user(user: User):
     user_dict['uuid'] = str(uuid.uuid4())
     user_dict['password'] = Hash.hash_password(user_dict['password'])  # Implement password hashing
     user_dict['created_at'] = datetime.now()  # Set the creation time
+    user_dict['permissions'] = []
     users.insert_one(user_dict)
     return {"message": "User created successfully"}
 
@@ -65,4 +66,8 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     access_token = Hash.create_access_token(
         data={"sub": user['username']}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+
+    del user["password"]
+    del user["_id"]
+
+    return {"access_token": access_token, "token_type": "bearer", "user": user}

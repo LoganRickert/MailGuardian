@@ -13,17 +13,24 @@ db = client['email_db']
 users = db.users
 
 class EmailQuery(BaseModel):
-    collection_name: str = Field(..., description="The name of the MongoDB collection.")
-    email_filter: Optional[str] = Field(None, description="Filter emails by sender email")
+    email_filter: str = Field(None, description="Filter emails by sender email")
     limit: int = Field(10, gt=0, le=100, description="Maximum number of emails to return")
 
 @router.post("/emails/")
 async def list_emails(query: EmailQuery, current_user: str = Depends(Hash.get_current_user)):
-    collection_name = query.collection_name
-    if collection_name not in db.list_collection_names():
-        raise HTTPException(status_code=404, detail="Collection not found")
+    first_email = query.email_filter
 
-    collection = db[collection_name]
+    if not first_email:
+        raise HTTPException(status_code=404, detail="No emails listed")
+
+    domain = first_email.split("@")[-1]
+
+    print("Checking Domain", domain, first_email)
+
+    if domain not in db.list_collection_names():
+        raise HTTPException(status_code=404, detail="Domain not found")
+
+    collection = db[domain]
 
     filter_query = {}
 

@@ -16,7 +16,7 @@ form_data = {
     'html': '<div>Sample HTML content</div>',
     'text': 'Sample plain text',
     'from': 'sender@example.com',
-    'to': 'receiver@example.com',
+    'to': 'example@example.com',
     'sender_ip': '192.168.1.1',
     'spam_report': 'No spam detected',
     'envelope': '{"to":["receiver@example.com"],"from":"sender@example.com"}',

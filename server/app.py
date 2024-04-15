@@ -2,6 +2,7 @@ from fastapi import *
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 from user_routes import router as user_router
 from email_routes import router as email_router
@@ -9,6 +10,16 @@ from webhook_routes import router as webhook_routes
 from domain_routes import router as domain_routes
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(user_router, prefix="/api/v1", tags=["users"])
 app.include_router(email_router, prefix="/api/v1", tags=["emails"])

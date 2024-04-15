@@ -24,7 +24,7 @@ class User(BaseModel):
                 "role": "member",
                 "permissions": [
                     {
-                        "collection_name": "example_collection",
+                        "domain": "example.com",
                         "emails": ["user@example.com"],
                         "can_read": True,
                         "can_send": False
